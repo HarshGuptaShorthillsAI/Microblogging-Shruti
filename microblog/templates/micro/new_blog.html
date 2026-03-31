@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}New Blog {% endblock %}
+
+{% block content %}
+<div class="container my-5">
+<h1>
+    Create a new blog
+</h1>
+<form method="post" enctype='multipart/form-data'>
+    {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Image</label>
+    <input type="file" class="form-control" name="image" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Blog</label>
+    <input type="text" class="form-control" name="blog" id="exampleInputPassword1">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div> 
+{% endblock %}

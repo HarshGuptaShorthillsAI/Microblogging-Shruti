@@ -1,0 +1,27 @@
+{% extends "base.html"%}
+
+{% block title%}Microblog Home {% endblock %}
+
+{% block content %}
+<div class="container my-5">
+</div>
+<h1>Blogs</h1>
+
+<div class="container d-flex flex-wrap">
+{%for blog in blogs %}
+<div class="card m-3" style="width: 18rem;">
+  <img src="media/{{blog.image}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{blog.user}}</h5>
+    <p class="card-text">{{blog.text}}</p>
+    {% if request.user == blog.user %}
+    <a href="{% url "update_blog" blog.id %}" class="btn btn-primary">Edit</a>
+    <a href="{% url "delete_blog" blog.id %}" class="btn btn-danger">Delete</a>
+    {% endif %}
+  </div>
+</div>
+{% endfor %}
+</div>
+
+
+{% endblock %}
