@@ -46,14 +46,17 @@
                 <span></span>
                 <span></span>
                 Profile
-            </a>
-                <a href="{% url 'logout' %}" id="auth-links">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Logout
-            </a>
+                </a>
+            <form method="post" action="{% url 'logout' %}" style="display:inline;">                        
+                {% csrf_token %}                                                                            
+                <button type="submit" id="auth-links">                                                      
+                  <span></span>                                                                               
+                  <span></span>                                                                               
+                  <span></span>                                                                               
+                  <span></span>                                                                               
+                  Logout                                                                                      
+              </button>                                                                                   
+              </form>    
                 {% else %}
               <a href="{% url 'login' %}" id="auth-links">
                 <span></span>
