@@ -56,8 +56,10 @@
                   <span></span>                                                                               
                   Logout                                                                                      
               </button>                                                                                   
-              </form>    
+              </form>
+                <button id="theme-toggle" title="Toggle light/dark mode">🌙</button>
                 {% else %}
+                <button id="theme-toggle" title="Toggle light/dark mode">🌙</button>
               <a href="{% url 'login' %}" id="auth-links">
                 <span></span>
                 <span></span>
@@ -149,11 +151,11 @@
 
         <footer class="" >
           <ul class="nav justify-content-center border-bottom"  style="margin-top: 60px;">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="{% url 'blog-home' %}" class="nav-link px-2 text-muted">Home</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-            <li class="nav-item"><a href="admin/" class="nav-link px-2 text-muted">Admin</a></li>
+            <li class="nav-item"><a href="/admin/" class="nav-link px-2 text-muted">Admin</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+            <li class="nav-item"><a href="{% url 'blog-about' %}" class="nav-link px-2 text-muted">About</a></li>
           </ul>
           <p class="text-center text-muted">&copy; All rights reserved 2026</p>
         </footer>
@@ -162,6 +164,25 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script>
+      (function() {
+        const saved = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', saved);
+        document.addEventListener('DOMContentLoaded', function() {
+          const btn = document.getElementById('theme-toggle');
+          if (btn) {
+            btn.textContent = saved === 'light' ? '🌙' : '☀️';
+            btn.addEventListener('click', function() {
+              const current = document.documentElement.getAttribute('data-theme');
+              const next = current === 'light' ? 'dark' : 'light';
+              document.documentElement.setAttribute('data-theme', next);
+              localStorage.setItem('theme', next);
+              btn.textContent = next === 'light' ? '🌙' : '☀️';
+            });
+          }
+        });
+      })();
+    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
