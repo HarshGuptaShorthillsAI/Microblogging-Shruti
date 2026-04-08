@@ -10,10 +10,10 @@
             {% endif %}
             <div class="media-body">
               <div class="article-metadata">
-                <a class="mr-2" href="#">{{ posts.author }}</a>
+                <a href="#">{{ posts.author }}</a>
                 <small class="text-muted">{{ posts.date_posted }}</small>
               </div>
-              <h2><a class="article-title" href="{% url 'blog-detail' posts.id %}">{{ posts.title }}</a></h2>
+              <h2 style="font-size: 1.4rem; font-weight: 600;"><a class="article-title" href="{% url 'blog-detail' posts.id %}">{{ posts.title }}</a></h2>
               <p class="article-content">{{ posts.content|truncatewords:30 }}</p>
             </div>
             <br>

@@ -97,11 +97,12 @@ a.article-title:hover {
 .article-content {
   white-space: pre-line;
   color: var(--text-primary);
+  font-size: 1.1rem;
 }
 
 .article-img {
-  height: 65px;
-  width: 65px;
+  height: 90px;
+  width: 90px;
   margin-right: 16px;
 }
 
@@ -109,9 +110,16 @@ a.article-title:hover {
   font-family: 'Poppins', sans-serif;
   padding-bottom: 1px;
   margin-bottom: 4px;
-  font-size: 13px;
+  font-size: 15px;
   border-bottom: 1px solid var(--article-metadata-border);
   color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.article-metadata a {
+  font-size: 17px;
 }
 
 .article-metadata a:hover {
